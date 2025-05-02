@@ -1,9 +1,11 @@
 const express = require('express');
 const router = require('./Routes/todoRouter');
+const { connectToMongo } = require('./connect');
 
-const app = express();
-app.use(express.json());
+const app = express();      // create an express server
+app.use(express.json());    // to convert the req body into JSON
+connectToMongo();           // Build a connection with Mongo DB
 
-app.use('/', router);
+app.use('/', router);       // Middleware :- Used for Routing purpose
 
 app.listen(400, () => console.log('Server is running on port - 4000'));
