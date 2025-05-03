@@ -1,8 +1,8 @@
-const { postCompleteSchema } = require('../types');
+const { postCompleteSchema, postToDoSchema } = require('../types');
 const { ToDo } = require('../connect');
 
 const createToDoHandler = async (req, res) => {
-    const postToDoSchemaResponse = postCompleteSchema.safeParse(req.body);
+    const postToDoSchemaResponse = postToDoSchema.safeParse(req.body);
     if (!postToDoSchemaResponse.success) {
         return res.status(411).json({
             Message: "Failure", FullMessage: "You sent the wrong inputs"
