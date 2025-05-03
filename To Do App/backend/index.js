@@ -1,8 +1,12 @@
 const express = require('express');
 const router = require('./Routes/todoRouter');
 const { connectToMongo } = require('./connect');
+const cors = require('cors')
 
 const app = express();      // create an express server
+app.use(cors(
+    // origin: "http://localhost:5173"
+));            // to enable the cors policy
 app.use(express.json());    // to convert the req body into JSON
 connectToMongo();           // Build a connection with Mongo DB
 
